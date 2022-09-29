@@ -1,0 +1,35 @@
+# This file shows mappings between subdirs/files and the individuals and
+# teams who own them. You can read this file yourself or use tools to query it,
+# so you can quickly determine who to speak with or send pull requests to.
+#
+# Ownership report: https://web-codeowners-report.provo1.endurancedevs.com/
+#
+# Overview of the CODEOWNERS syntax:
+#
+#   # Project: <PROJECT_NAME>
+#   <GITIGNORE_PATTERN>  <OWNER>...
+#   # This is a comment.
+#
+# The owner list must include one or more whitespace-separated AD users or
+# groups (prefixed by @ or @@, respectively).
+# The amount of whitespace is irrelevant. Line order is important; the last
+# matching pattern in the file takes precedence.
+#
+# Examples:
+#
+#   # Project: Support Tool
+#   /src/  @@team-awesome
+#   /src/oneoff.c  @@another-team
+#   # Note: This wouldn't work as expected if the line order was reversed.
+#
+# For more information about CODEOWNERS files, see:s
+# https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#codeowners-syntax
+
+@@@"Leadership" @@bh-engineering-tlt @@bh-engineering-directors
+
+# Project: Thumbnail Service (Thumbnail)
+
+/*                                     @@Matrix
+/app/                                  @@Matrix
+/app/routers/      *                   @@Matrix
+/tests/                                @@Matrix

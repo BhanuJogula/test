@@ -1,0 +1,8 @@
+{
+    "host": "esfwdf90a1.execute-api.us-east-1.amazonaws.com/prod",
+    "debug": true,
+    "default_brand": "bluehost",
+    "log_json": false,
+    "log_text": true,
+    "secret": "00962c09-fdff-4b70-88ea-649b77ff0916"
+}

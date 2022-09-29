@@ -1,0 +1,186 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Hosting UAPI",
+        "version": "0.1.0",
+        "description": "This file will be combined with other *.openapi.json files to form the full file"
+    },
+    "paths": {
+        "/v1/thumbnail/hello": {
+            "get": {
+                "summary": "hello",
+                "operationId": "thumbnail_hello",
+                "description": "Returns an SSO token or login URL for tthe site (if supported).",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "sso": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/thumbnail/generate-screenshot": {
+            "post": {
+                "summary": "generate-screenshot",
+                "operationId": "thumbnail_generate_screenshot",
+                "description": "Returns an SSO token or login URL for tthe site (if supported).",
+              "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "site_url": {
+                                        "type": "string",
+                                        "description": ""
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/thumbnail/get-screenshot": {
+            "get": {
+                "summary": "get-screenshot",
+                "operationId": "thumbnail_get_screenshot",
+                "description": "Returns an SSO token or login URL for tthe site (if supported).",
+                "parameters": [
+                    {
+                        "name": "site_url",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "force_override",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "false",
+                            "enum": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                ],
+              "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/thumbnail/update-screenshot": {
+            "post": {
+                "summary": "screenshot",
+                "operationId": "thumbnail_update_screenshot",
+                "description": "Callback URL to update the screenshots in the database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "successful" : {
+                                        "items" : {
+                                            "properties" : {
+                                                "url" : {
+                                                    "type": "string"
+                                                },
+                                                "websiteUrl" : {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type" : "object"
+                                        },
+                                        "type" : "array"
+                                    },
+                                    "didNotResolve" : {
+                                        "items" : {
+                                            "type": "string"
+                                        },
+                                        "type" : "array"
+                                    },
+                                    "timedOut" : {
+                                        "items" : {
+                                            "type": "string"
+                                        },
+                                        "type" : "array"
+                                    },
+                                    "blankScreenshot" : {
+                                        "items" : {
+                                            "type": "string"
+                                        },
+                                        "type" : "array"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

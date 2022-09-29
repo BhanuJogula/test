@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+from argparse import ArgumentParser
+from app.nf_token import Token
+from app.config import bifrostCfg
+import json
+
+# parse the args
+parser = ArgumentParser(description="Create a Bifrost API token (usually for testing)")
+parser.add_argument("--brand", default='bluehost', type=str, help="brand the target account exists on")
+parser.add_argument("--verbose", "-v", action='store_true', help="Prints decoded token")
+parser.add_argument("--header", action='store_true', help="Prints decoded token")
+parser.add_argument("--keyfile", help="keyfile")
+parser.add_argument("--kid", default='thumbnail', help="key id")
+
+
+args = vars(parser.parse_args())
+token_data = None
+
+if args.get("account") is None or args.get("brand") is None:
+    token_data = {
+        "brand": args.get("brand") if args.get("brand") else bifrostCfg.get('test_brand', 'bluehost')
+    }
+else:
+    token_data = {
+        key: args.get(key) for key in ("brand") if args.get(key, None)
+    }
+
+# generate the token
+
+key = None
+if args.get('keyfile'):
+    with open(args.get('keyfile')) as f:
+        key = f.read()
+
+token = Token.create_test_token(**token_data, private_key=key, kid=args.get('kid'))
+
+end_char = ''
+if args.get('verbose'):
+    decoded = Token.decode(token)
+    print("Decoded Token:")
+    print("--------------")
+    print(json.dumps(decoded, indent=4))
+    print()
+    print("Encoded Token:")
+    print("--------------")
+    end_char = '\n'
+
+if args.get('header'):
+    print("authorization: bearer " + token, end_char)
+else:
+    print(token, end_char)

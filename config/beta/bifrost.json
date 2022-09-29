@@ -1,0 +1,7 @@
+{
+    "debug": true,
+    "host": "usz2lmwi07.execute-api.us-east-1.amazonaws.com/qa",
+    "log_json": false,
+    "log_text": false,
+    "secret": "605b4a28-ec90-4327-87e6-af2613661a09"
+}

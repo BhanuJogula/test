@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+cd $(dirname $0)/..
+
+echo "docker build -t thumbnail --build-arg "pip_args=--dev" -f  Dockerfile $@ ."
+docker build -t thumbnail --build-arg "pip_args=--dev" -f Dockerfile $@ .

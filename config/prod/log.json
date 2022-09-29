@@ -1,0 +1,15 @@
+{
+    "level": "INFO",
+    "datadog": {
+        "tracing": {
+            "https": false,
+            "enabled": true,
+            "host": "datadog-apm.newfold-datadog.svc",
+            "port": 8126
+        },
+        "logging": {
+            "enabled": false,
+            "intake_url": "https://http-intake.logs.datadoghq.com/api/v2/logs"
+        }
+    }
+}

@@ -1,0 +1,22 @@
+name: sites
+paths:
+  "get /v1/thumbnail/hello":
+    handler: "thumbnail"
+    action: "hello"
+    response:
+      str: ""
+  "get /v1/thumbnail/get-screenshot":
+    handler: "thumbnail"
+    action: "get-screenshot"
+    response:
+      msg: ""
+  "post /v1/thumbnail/generate-screenshot":
+    handler: "thumbnail"
+    action: "generate-screenshot"
+    response:
+      msg: ""
+  "post /v1/thumbnail/update-screenshot":
+    handler: "thumbnail"
+    action: "update-screenshot"
+    response:
+      msg: ""

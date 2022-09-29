@@ -1,0 +1,28 @@
+import pytest
+import sys
+import os
+
+# click the gear icon near the debug run to set launch config.
+# set configurations[0].env.DEBUG_TEST to the test name you want to run
+
+# EXAMPLE .vscode/launch.json
+#    6   │     "configurations": [
+#    7   │         {
+#    8   │             "name": "Python: Current File",
+#    9   │             "type": "python",
+#   10   │             "request": "launch",
+#   11   │             "program": "${file}",
+#   12   │             "console": "integratedTerminal",
+#   13   │             "justMyCode": true,
+#   14   │             "env": {
+#   15   │                 "DEBUG_TEST": "integration_main"
+#   16   │             }
+#   17   │         }
+
+test_name = os.getenv('DEBUG_TEST')
+
+if test_name:
+    pytest.main(['-k', test_name])
+else:
+    pytest.main()
+

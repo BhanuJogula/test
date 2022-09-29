@@ -1,0 +1,25 @@
+#!/usr/bin/env perl
+
+# Run command inside docker container
+
+use FindBin '$Bin';
+use Cwd 'abs_path';
+use v5.10;
+
+$dir = abs_path("$Bin/..");
+
+$des="/usr/src/app" ;
+sub v {
+	return " -v $dir/$_[0]:/usr/src/app/$_[0]" ;
+}
+
+$bin = shift @ARGV;
+$args = "";
+foreach (@ARGV) {
+	if (/\s/) { $args .= "'$_'"; }
+	else { $args .= $_ }
+	$args .= " ";
+}
+$cmd="docker run -e NF_ENV=dev --name thumbnail --rm -it -p8000:8000 " . v("bin") . v("tests") . v("config") . v("app") . " huapi $bin $args";
+exec($cmd);
+

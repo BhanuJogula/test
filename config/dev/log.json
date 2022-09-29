@@ -1,0 +1,16 @@
+{
+    "file": "/tmp/thumbnail.log",
+    "level": "DEBUG",
+    "datadog": {
+        "tracing": {
+            "https": false,
+            "enabled": false,
+            "host": "localhost",
+            "port": 8126
+        },
+        "logging": {
+            "enabled": false,
+            "intake_url": "https://http-intake.logs.datadoghq.com/api/v2/logs"
+        }
+    }
+}

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd $(dirname $0)
+./run uvicorn --host 0.0.0.0 app.main:app --reload --reload-include "*.openapi.json" --no-server-header --no-date-header
